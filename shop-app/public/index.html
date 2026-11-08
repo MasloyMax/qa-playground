@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#28594b">
+  <title>Практика — вещи для хорошего дня</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+<svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <symbol id="headphones" viewBox="0 0 120 120"><path d="M28 68V54a32 32 0 0164 0v14" fill="none" stroke="currentColor" stroke-width="9"/><rect x="19" y="57" width="22" height="38" rx="10"/><rect x="79" y="57" width="22" height="38" rx="10"/><path d="M35 45a26 26 0 0150 0" fill="none" stroke="white" stroke-opacity=".4" stroke-width="4"/></symbol>
+    <symbol id="keyboard" viewBox="0 0 120 120"><rect x="8" y="34" width="104" height="58" rx="12"/><g fill="white" opacity=".7"><path d="M20 46h10v9H20zm17 0h10v9H37zm17 0h10v9H54zm17 0h10v9H71zm17 0h11v9H88zM20 62h10v9H20zm17 0h10v9H37zm17 0h10v9H54zm17 0h10v9H71zm17 0h11v9H88zM35 78h50v6H35z"/></g></symbol>
+    <symbol id="lamp" viewBox="0 0 120 120"><path d="M55 52h9v47h-9z"/><ellipse cx="60" cy="100" rx="31" ry="7"/><path d="M34 23h52l17 39H17z"/><ellipse cx="60" cy="62" rx="43" ry="6" fill="white" opacity=".35"/></symbol>
+    <symbol id="speaker" viewBox="0 0 120 120"><rect x="29" y="12" width="62" height="96" rx="26"/><g fill="none" stroke="white" stroke-opacity=".5"><circle cx="60" cy="73" r="21" stroke-width="3"/><circle cx="60" cy="73" r="12" stroke-width="2"/><circle cx="60" cy="34" r="8" stroke-width="3"/></g></symbol>
+    <symbol id="mouse" viewBox="0 0 120 120"><rect x="31" y="13" width="58" height="94" rx="29"/><path d="M60 15v35M32 51h56" fill="none" stroke="white" stroke-opacity=".4" stroke-width="2"/><rect x="56" y="26" width="8" height="18" rx="4" fill="white" opacity=".7"/></symbol>
+    <symbol id="cup" viewBox="0 0 120 120"><path d="M34 26h52l-7 78H41z"/><rect x="28" y="16" width="64" height="15" rx="6"/><path d="M40 48h40l-3 26H43z" fill="white" opacity=".35"/></symbol>
+    <symbol id="bag" viewBox="0 0 120 120"><path d="M44 30V17h32v13" fill="none" stroke="currentColor" stroke-width="7"/><rect x="24" y="26" width="72" height="80" rx="20"/><rect x="36" y="64" width="48" height="31" rx="8" fill="white" opacity=".3"/><path d="M38 73h44" stroke="white" stroke-width="3"/></symbol>
+    <symbol id="camera" viewBox="0 0 120 120"><path d="M39 25h42l7 14h11a12 12 0 0112 12v38a12 12 0 01-12 12H21A12 12 0 019 89V51a12 12 0 0112-12h11z"/><circle cx="60" cy="69" r="23" fill="white" opacity=".6"/><circle cx="60" cy="69" r="14"/><rect x="89" y="49" width="12" height="7" rx="2" fill="white"/></symbol>
+    <symbol id="cart-icon" viewBox="0 0 24 24"><path d="M2 3h3l3 13h11l3-9H6M9 21h.01M18 21h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+<div class="announcement">Маленькие вещи. Большой комфорт. <span>Бесплатная доставка от 5 000 ₽</span></div>
+<header class="header">
+  <a class="brand" href="#catalog" aria-label="Практика — главная"><span class="brand-mark">п.</span>практика<span class="brand-dot">®</span></a>
+  <nav aria-label="Главное меню">
+    <a href="#catalog" data-nav="catalog" data-testid="catalog-link">Каталог</a>
+    <a href="#orders" data-nav="orders" data-testid="orders-link">Мои заказы</a>
+  </nav>
+  <div class="header-actions">
+    <button class="text-button" id="login-button" data-testid="login-open">Войти <span aria-hidden="true">↗</span></button>
+    <span id="user-name" data-testid="user-name" hidden></span>
+    <button class="text-button subtle" id="logout-button" data-testid="logout" hidden>Выйти</button>
+    <a class="cart-link" href="#cart" data-nav="cart" data-testid="cart-link"><svg class="icon" aria-hidden="true"><use href="#cart-icon"/></svg><span class="cart-label">Корзина</span><span id="cart-count" data-testid="cart-count">0</span></a>
+  </div>
+</header>
+<main>
+  <section id="catalog-view" class="view" aria-labelledby="catalog-title">
+    <div class="hero">
+      <div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> Коллекция на каждый день</p><h1>Хороший день<br>начинается с <em>деталей.</em></h1><p>Для работы, дома и маленьких путешествий.<br>Вещи, которыми приятно пользоваться.</p><a class="button dark" href="#products">Найти своё <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a></div>
+      <div class="hero-art" aria-hidden="true"><span class="hero-orbit"></span><div class="hero-product"><svg><use href="#headphones"/></svg></div><span class="hero-tag">Wave / звук вашего дня</span><span class="hero-note">less noise,<br>more you.</span><span class="spark">✳</span></div>
+    </div>
+    <div class="section-heading" id="products"><div><p class="eyebrow muted">Собрали самое нужное</p><h2 id="catalog-title">Вещи с характером<span class="small-counter">08</span></h2></div><p class="muted">Меньше лишнего. Больше любимого.</p></div>
+    <form class="filters" id="filters" role="search">
+      <label class="search-field"><span class="sr-only">Название товара</span><span aria-hidden="true">⌕</span><input id="search" data-testid="search" type="search" placeholder="Найти что-то хорошее…" autocomplete="off"></label>
+      <label><span class="sr-only">Категория</span><select id="category" data-testid="category"><option value="">Все категории</option><option value="audio">Аудио</option><option value="workspace">Рабочее место</option><option value="home">Для дома</option><option value="travel">В дорогу</option></select></label>
+      <label><span class="sr-only">Сортировка</span><select id="sort" data-testid="sort"><option value="name">По названию</option><option value="price_asc">Сначала дешевле</option><option value="price_desc">Сначала дороже</option></select></label>
+      <label class="check-label"><input id="in-stock" data-testid="in-stock" type="checkbox"> В наличии</label>
+    </form>
+    <div class="catalog-meta"><span id="products-count" data-testid="products-count" aria-live="polite"></span><button id="reset-filters" class="text-button subtle" type="button" data-testid="reset-filters">Сбросить фильтры</button></div>
+    <div id="product-grid" class="product-grid" data-testid="product-grid" aria-busy="true"></div>
+    <div class="pagination"><button id="prev-page" class="button secondary small" data-testid="prev-page">← Назад</button><span id="page-number" data-testid="page-number"></span><button id="next-page" class="button secondary small" data-testid="next-page">Далее →</button></div>
+    <div class="benefits"><div><b>01 / С заботой о деталях</b><span>Продуманные вещи для обычной жизни.</span></div><div><b>02 / Без лишних сложностей</b><span>Выбрали, заказали, пользуетесь.</span></div><div><b>03 / Приятное знакомство</b><span>−10% по промокоду <strong>PRACTICE10</strong>.</span></div></div>
+  </section>
+  <section id="cart-view" class="view" hidden><div class="section-heading"><div><p class="eyebrow muted">Ваш выбор</p><h1 class="page-title">Корзина</h1></div><a href="#catalog" class="text-button">Продолжить покупки ↗</a></div><div id="cart-content" data-testid="cart-content"></div></section>
+  <section id="checkout-view" class="view" hidden>
+    <div class="section-heading"><div><p class="eyebrow muted">Остался один шаг</p><h1 class="page-title">Оформление заказа</h1></div><a href="#cart" class="text-button">← В корзину</a></div>
+    <div class="checkout-layout"><form id="checkout-form" class="panel" novalidate><h2>Куда доставить?</h2><p class="muted">Заполните данные получателя.</p>
+      <label>Имя получателя<input name="name" data-testid="checkout-name" autocomplete="name" maxlength="80" placeholder="Как к вам обращаться"><small class="field-error" data-error="name"></small></label>
+      <label>Электронная почта<input name="email" data-testid="checkout-email" type="email" autocomplete="email" placeholder="you@example.com"><small class="field-error" data-error="email"></small></label>
+      <label>Телефон<input name="phone" data-testid="checkout-phone" type="tel" autocomplete="tel" placeholder="+79991234567"><small class="field-error" data-error="phone"></small></label>
+      <label>Адрес доставки<textarea name="address" data-testid="checkout-address" autocomplete="street-address" rows="3" maxlength="200" placeholder="Город, улица, дом, квартира"></textarea><small class="field-error" data-error="address"></small></label>
+      <p class="form-error" id="checkout-error" data-testid="checkout-error" role="alert"></p>
+      <button class="button dark wide" type="submit" data-testid="place-order">Подтвердить заказ <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button><p class="form-note">Учебный магазин: деньги не списываются.</p>
+    </form><aside id="checkout-summary" class="panel summary" aria-label="Сумма заказа"></aside></div>
+  </section>
+  <section id="orders-view" class="view" hidden><div class="section-heading"><div><p class="eyebrow muted">Всё в одном месте</p><h1 class="page-title">Мои заказы</h1></div><a href="#catalog" class="text-button">В каталог ↗</a></div><div id="orders-content" data-testid="orders-content"></div></section>
+  <section id="success-view" class="view" hidden><div id="success-content"></div></section>
+  <div id="page-error" class="form-error" role="alert" hidden></div>
+</main>
+<footer><a class="brand" href="#catalog"><span class="brand-mark">п.</span>практика</a><p>Хорошие вещи для вашей повседневности.</p><span>Учебный магазин · 2026</span></footer>
+<dialog id="login-dialog" aria-labelledby="login-title">
+  <button class="dialog-close" data-close="login-dialog" aria-label="Закрыть" type="button">×</button>
+  <span class="brand-mark">п.</span><p class="eyebrow muted">Рады видеть вас</p><h2 id="login-title">С возвращением</h2><p class="muted">Войдите, чтобы сохранить свой выбор.</p>
+  <form id="login-form" novalidate><label>Электронная почта<input name="email" type="email" data-testid="login-email" autocomplete="username" placeholder="demo@practice.dev"></label><label>Пароль<input name="password" type="password" data-testid="login-password" autocomplete="current-password" placeholder="Ваш пароль"></label><p id="login-error" class="form-error" data-testid="login-error" role="alert"></p><button class="button dark wide" type="submit" data-testid="login-submit">Войти в аккаунт <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button></form>
+  <div class="demo-hint"><b>Аккаунт для знакомства</b><span>demo@practice.dev / practice123</span></div>
+</dialog>
+<dialog id="product-dialog" aria-labelledby="product-title"><button class="dialog-close" data-close="product-dialog" aria-label="Закрыть" type="button">×</button><div id="product-detail"></div></dialog>
+<div id="toast" class="toast" role="status" data-testid="toast" hidden></div>
+</body>
+</html>

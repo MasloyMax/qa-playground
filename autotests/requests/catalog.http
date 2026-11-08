@@ -1,0 +1,25 @@
+# Запусти магазин и нажми Send Request над нужным запросом.
+@baseUrl = http://127.0.0.1:3000/api
+
+### Сначала войти
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "demo@practice.dev",
+  "password": "practice123"
+}
+
+### Затем добавить товар
+POST {{baseUrl}}/cart/items
+Accept: application/json
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 2
+}
+
+### Получить каталог продуктов
+GET {{baseUrl}}/products?page=1&size=100
+Content-Type: application/json

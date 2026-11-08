@@ -1,0 +1,12 @@
+.gradle/
+**/build/
+node_modules/
+.idea/
+*.log
+.runtime/
+**/bin/
+*.class
+.aiforopenide/
+.env
+.env.*
+!.env.example

@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+}
+
+group = 'practice'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.14.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'com.codeborne:selenide:7.18.2'
+    testImplementation 'io.rest-assured:rest-assured:6.0.1'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.22.3'
+    testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.17'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    systemProperty 'file.encoding', 'UTF-8'
+    [baseUrl: 'base.url', headless: 'ui.headless', browser: 'ui.browser', timeout: 'ui.timeout.ms'].each { option, property ->
+        if (providers.gradleProperty(option).isPresent()) {
+            systemProperty property, providers.gradleProperty(option).get()
+        }
+    }
+    systemProperty 'ui.reports', layout.buildDirectory.dir('selenide').get().asFile.absolutePath
+    if (providers.gradleProperty('driverPath').isPresent()) {
+        systemProperty 'webdriver.chrome.driver', providers.gradleProperty('driverPath').get()
+    }
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        exceptionFormat = 'full'
+    }
+    // The application is external: every invocation must really execute tests.
+    outputs.upToDateWhen { false }
+}
+
+tasks.register('uiTest', Test) {
+    description = 'Run UI tests (Selenide).'
+    group = 'verification'
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    useJUnitPlatform { includeTags 'ui' }
+}
+
+tasks.register('apiTest', Test) {
+    description = 'Run API tests (REST Assured).'
+    group = 'verification'
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    useJUnitPlatform { includeTags 'api' }
+}

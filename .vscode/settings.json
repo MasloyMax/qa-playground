@@ -1,0 +1,7 @@
+{
+  "java.dependency.packagePresentation": "hierarchical",
+  "java.dependency.showMembers": true,
+  "java.inlayHints.parameterNames.enabled": "all",
+  "java.referencesCodeLens.enabled": true,
+  "breadcrumbs.enabled": true
+}
